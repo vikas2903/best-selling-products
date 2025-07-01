@@ -8,13 +8,12 @@ import {
   Button,
   BlockStack,
   Box,
-  List,
   Link,
   InlineStack,
 } from "@shopify/polaris";
 import { TitleBar, useAppBridge } from "@shopify/app-bridge-react";
 import { authenticate } from "../shopify.server";
-import Homepagesecone from "../components/Homepagesecone.jsx";
+// import Homepagesecone from "../components/Homepagesecone.jsx";
 export const loader = async ({ request }) => {
   await authenticate.admin(request);
 
@@ -111,8 +110,8 @@ export default function Index() {
           Generate a product
         </button>
       </TitleBar>
-        < Homepagesecone />
-        <br />
+        {/* < Homepagesecone />
+        <br /> */}
       <BlockStack gap="500">
         <Layout>
           <Layout.Section>
