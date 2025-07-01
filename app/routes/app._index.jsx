@@ -5,6 +5,7 @@ import {
   Layout,
   Text,
   Card,
+  List,
   Button,
   BlockStack,
   Box,
@@ -110,8 +111,7 @@ export default function Index() {
           Generate a product
         </button>
       </TitleBar>
-        {/* < Homepagesecone />
-        <br /> */}
+
       <BlockStack gap="500">
         <Layout>
           <Layout.Section>
@@ -292,7 +292,7 @@ export default function Index() {
                   </BlockStack>
                 </BlockStack>
               </Card>
-              {/* <Card>
+              <Card>
                 <BlockStack gap="200">
                   <Text as="h2" variant="headingMd">
                     Next steps
@@ -322,13 +322,12 @@ export default function Index() {
                     </List.Item>
                   </List>
                 </BlockStack>
-              </Card> */}
+              </Card>
             </BlockStack>
           </Layout.Section>
         </Layout>
       </BlockStack>
-      <br />
-      <br />
+
     </Page>
   );
 }
