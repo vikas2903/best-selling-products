@@ -1,0 +1,81 @@
+
+<div class="section-wrapper">
+    <div class="section-heading">{{block.settings.heading}}</div>
+    <div id="top-products-container">
+    <p>Loading top products...</p>
+    </div>
+
+</div>
+<script>
+  document.addEventListener("DOMContentLoaded", async function() {
+    const shop = "{{ shop.permanent_domain }}";
+
+    // Get yesterday's date dynamically
+    const today = new Date();
+    today.setDate(today.getDate() - 1);
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, "0");
+    const day = String(today.getDate()).padStart(2, "0");
+    const date = `${year}-${month}-${day}`;
+
+    const endpoint = `https://shopify-wishlist-app-mu3m.onrender.com/api/data?shop=${shop}&date=${date}`;
+
+    try {
+      const res = await fetch(endpoint);
+      if (!res.ok) throw new Error("Failed to fetch products");
+
+      const data = await res.json();
+      const products = (data.products || []).sort((a, b) => b.views - a.views).slice(0, 8);
+
+      let html = '<div class="top-products-grid">';
+      products.forEach(product => {
+        html += `
+          <div class="top-product-item">
+            <a href="/products/${product.productHandle}">
+              <h3>${product.productHandle}</h3>
+              <p>Views: ${product.views}</p>
+              <p>Add to Cart Clicks: ${product.addToCartClicks}</p>
+            </a>
+          </div>
+        `;
+      });
+      html += '</div>';
+
+      document.getElementById("top-products-container").innerHTML = html;
+      
+    } catch (error) {
+      console.error("Error fetching top products:", error);
+      document.getElementById("top-products-container").innerHTML = "<p>Failed to load top products.</p>";
+    }
+  });
+</script>
+
+<style>
+  .top-products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+  }
+  .top-product-item {
+    border: 1px solid #eee;
+    padding: 10px;
+    text-align: center;
+  }
+  .top-product-item h3 {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+</style>
+{% schema %}
+{
+    "name":"Products Views",
+    "target":"section",
+    "settings":[
+        {
+            "type":"liquid",
+            "id":"heading",
+            "label":"Heading"
+        }
+    ]
+}
+{% endschema %}

@@ -3,7 +3,7 @@
 client_id = "c1d31b88697afd8aba9f384911871fe8"
 name = "best-selling-products"
 handle = "best-selling-products-5"
-application_url = "https://have-katrina-diagram-corporate.trycloudflare.com"
+application_url = "https://criteria-fever-dramatically-included.trycloudflare.com"
 embedded = true
 
 [build]
@@ -27,9 +27,9 @@ scopes = "write_products"
 
 [auth]
 redirect_urls = [
-  "https://have-katrina-diagram-corporate.trycloudflare.com/auth/callback",
-  "https://have-katrina-diagram-corporate.trycloudflare.com/auth/shopify/callback",
-  "https://have-katrina-diagram-corporate.trycloudflare.com/api/auth/callback"
+  "https://criteria-fever-dramatically-included.trycloudflare.com/auth/callback",
+  "https://criteria-fever-dramatically-included.trycloudflare.com/auth/shopify/callback",
+  "https://criteria-fever-dramatically-included.trycloudflare.com/api/auth/callback"
 ]
 
 [pos]
